@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: econet-bundle-builder
+    runtime: node
+    plan: starter          # $7/month — always on, no cold starts
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: TELEGRAM_TOKEN
+        sync: false        # set manually in Render dashboard
+      - key: TELEGRAM_CHAT_ID
+        sync: false        # set manually in Render dashboard
